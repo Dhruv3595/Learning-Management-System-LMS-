@@ -1,0 +1,182 @@
+/* Sticky Search Bar Animation Utilities */
+
+/* Smooth scroll behavior for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced sticky search animations */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToTop {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Subtle float animation for search elements */
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Hover effects for search elements */
+.search-hover-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-hover-effect:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.search-hover-effect:focus-within {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+}
+
+/* Backdrop blur fallback for browsers that don't support it */
+@supports not (backdrop-filter: blur(16px)) {
+  .sticky-search-fallback {
+    background-color: rgba(255, 255, 255, 0.98);
+  }
+  
+  .dark .sticky-search-fallback {
+    background-color: rgba(31, 41, 55, 0.98);
+  }
+}
+
+/* Enhanced focus states for better accessibility */
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(59 130 246);
+  border-color: rgb(59 130 246);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .sticky-search-mobile {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Performance optimizations */
+.sticky-search-container {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+/* Loading states */
+.search-loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Enhanced glassmorphism effect */
+.sticky-search-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth entrance animations */
+.sticky-search-enter {
+  animation: slideInFromTop 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.sticky-search-exit {
+  animation: slideOutToTop 0.3s cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+/* Floating Search Pill Animations */
+@keyframes floatUp {
+  0% {
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatDown {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.floating-search-enter {
+  animation: floatUp 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.floating-search-exit {
+  animation: floatDown 0.3s cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+/* Floating pill bounce effect */
+@keyframes gentle-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+.floating-pill-bounce {
+  animation: gentle-bounce 2s infinite;
+}
+
+/* Improved glassmorphism for floating pill */
+.floating-glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .floating-glass {
+  background: rgba(31, 41, 55, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
