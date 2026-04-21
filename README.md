@@ -1,4 +1,5 @@
 # Learning Management System (LMS)
+# DEVELOPED BY DHRUV PANDYA
 
 A robust and scalable full-stack Learning Management System (MERN Stack) designed to help educators create, manage, and deliver educational content while giving students a seamless learning experience.
 
